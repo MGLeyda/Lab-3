@@ -1,40 +1,14 @@
-import React from "react"
-export default class IndexPage extends React.Component {
-  state = {
-    firstName: "",
-    lastName: "",
-  }
-  handleInputChange = event => {
-    const target = event.target
-    const value = target.value
-    const name = target.name
-    this.setState({
-      [name]: value,
-    })
-  }
-  render() {
-    return (
-      <form>
-        <label>
-          First name
-          <input
-            type="text"
-            name="firstName"
-            value={this.state.firstName}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <label>
-          Last name
-          <input
-            type="text"
-            name="lastName"
-            value={this.state.lastName}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-    )
-  }
+// Step 1: Import React
+import * as React from 'react'
+// Step 2: Define your component
+const IndexPage = () => {
+  return (
+    <main>
+      <title>Home Page</title>
+      <h1>Welcome to my Gatsby site!</h1>
+      <p>I'm making this by following the Gatsby Tutorial.</p>
+    </main>
+  )
 }
+// Step 3: Export your component
+export default IndexPage

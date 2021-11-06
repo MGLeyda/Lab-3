@@ -12,13 +12,9 @@ export default class IndexPage extends React.Component {
       [name]: value,
     })
   }
-  handleSubmit = event => {
-    event.preventDefault()
-    alert(`Welcome ${this.state.firstName} ${this.state.lastName}!`)
-  }
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form>
         <label>
           First name
           <input

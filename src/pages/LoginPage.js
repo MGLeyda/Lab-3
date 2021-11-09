@@ -1,4 +1,5 @@
 import React from "react"
+
 export default class IndexPage extends React.Component {
   state = {
     Username: "",
@@ -19,6 +20,7 @@ export default class IndexPage extends React.Component {
   }
   render() {
     return (
+    
       <form onSubmit={this.handleSubmit}>
         <label>
           Username

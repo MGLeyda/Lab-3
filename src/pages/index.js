@@ -41,7 +41,6 @@ export default class IndexPage extends React.Component {
           />
         </label>
         <br />
-     
         <button type="submit">Submit</button>
       </form>
     )

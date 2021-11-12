@@ -7,6 +7,9 @@ export default class PollFormPage extends React.Component {
     RestrictVperPoll: "",
     RestrictVperPar: "",
     Invite: "",
+    DateFrom: "",
+    DateTo: "",
+    Remind: "",
   }
   handleInputChange = event => {
     const target = event.target
@@ -59,6 +62,28 @@ export default class PollFormPage extends React.Component {
         <br />
         <textarea name="Text1" cols="40" rows="5"></textarea>
         <br />
+        <label>Dates</label>
+          <br />
+          <label>
+          From:
+          <input
+            type="text"
+            name="datefrom"
+            value={this.state.datefrom}
+            onChange={this.handleInputChange}
+          />
+          </label>
+          <br />
+          <label>
+          To:  
+          <input
+            type="text"
+            name="datefrom"
+            value={this.state.dateto}
+            onChange={this.handleInputChange}
+          />
+          </label>
+          <br />
         <label>Restrict Number of Votes per Poll: </label> 
          <select>
             <option value = "na">No Restriction</option>
@@ -89,7 +114,13 @@ export default class PollFormPage extends React.Component {
           />
         </label>
         <br />
-        <button type="publish">Publish</button>
+
+        <label for="myCheck"></label> 
+        <input type="checkbox" id="myCheck" onclick="myFunction()"/>
+
+        <label> Remind Participant(s):  </label>
+        <br />
+        <button type="publish">Publish</button> 
       </form>
     )
   }

@@ -1,5 +1,5 @@
 import React from "react"
-import { heading } from 'src\components\login.module.css'
+import { heading } from '../components/login.module.css'
 export default class IndexPage extends React.Component {
   state = {
     Username: "",

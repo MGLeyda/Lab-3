@@ -19,7 +19,7 @@ export default class IndexPage extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h1>Login</h1>
+        <h1 className={heading}>Login</h1>
         <br />
         <label>
           Username:    

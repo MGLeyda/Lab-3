@@ -21,7 +21,7 @@ export default class IndexPage extends React.Component {
     return (
     <center>
       <form onSubmit={this.handleSubmit}>
-        <h1>Login</h1>
+        <h1 style={{backgroundColor: "lightblue"}}>Login</h1>
         <br />
         <label>
           Username:    

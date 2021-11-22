@@ -19,6 +19,7 @@ export default class IndexPage extends React.Component {
   }
   render() {
     return (
+    <center>
       <form onSubmit={this.handleSubmit}>
         <h1 style="text-align:center;">Login</h1>
         <br />
@@ -45,6 +46,7 @@ export default class IndexPage extends React.Component {
      
         <button type="submit">Submit</button>
       </form>
+    </center>
     )
   }
 }

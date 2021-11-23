@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import React from "react"
+import { BrowserRouter as Router, Route } from "react-router-dom";
+export default class AdminPage extends React.Component {
 
-function AdminHome(){
-    handleSubmit = event => {
+    handleCreate = event => {
         event.preventDefault()
-        alert(`Welcome ${this.state.Username} ${this.state.password}!`)
-      }
-    return (
-        <form onSubmit={this.handleSubmit}>
-          <h1>Admin. Home</h1>
-          <br />
-          <button type="submit">Create New Poll</button>
-        </form>
-      )
+        alert(`Create Button Pressed`)
+    }
+
+    render(){
+        return(
+            <form onCreate = {this.handleCreate}>
+                <h1>Admin Home</h1>
+                <br />
+                <button type="create">Create New Poll</button>
+            </form>
+        )
+    }
 }

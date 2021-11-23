@@ -1,4 +1,6 @@
 import React from "react"
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import AdminPage from "./adminHome.js";
 export default class IndexPage extends React.Component {
   state = {
     Username: "",
@@ -13,8 +15,16 @@ export default class IndexPage extends React.Component {
     })
   }
   handleSubmit = event => {
-    event.preventDefault()
-    alert(`Welcome ${this.state.Username} ${this.state.password}!`)
+    <Router>
+      <main>
+        <nav>
+          <ul>
+          <li><a href = "/adminHome.js">AdminPage</a></li>
+          </ul>
+        </nav>
+        <Route path = "/adminHome.js" component={AdminPage} />
+      </main>
+    </Router>
   }
   render() {
     return (

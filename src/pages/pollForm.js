@@ -7,10 +7,9 @@ export default class PollFormPage extends React.Component {
     RestrictVperPoll: "",
     RestrictVperPar: "",
     Invite: "",
-    DateFrom: "",
-    DateTo: "",
     Remind: "",
   }
+
   handleInputChange = event => {
     const target = event.target
     const value = target.value
@@ -19,13 +18,17 @@ export default class PollFormPage extends React.Component {
       [name]: value,
     })
   }
+
   handlePublish = event => {
     event.preventDefault()
     alert(`Welcome ${this.state.title} ${this.state.location}`)
   }
+ 
+
   render() {
+    let{date, fromHr, fromMin, toHr, toMin, slots} = this.state
     return (
-      <form onSubmit={this.handlePublish}>
+      <form onSubmit={this.handlePublish} onChange = {this.handleNewBlock}>
         <h1>New Poll</h1>
         <br />
         <label>
@@ -62,28 +65,10 @@ export default class PollFormPage extends React.Component {
         <br />
         <textarea name="Text1" cols="40" rows="5"></textarea>
         <br />
-        <label>Dates</label>
-          <br />
-          <label>
-          From:
-          <input
-            type="text"
-            name="datefrom"
-            value={this.state.datefrom}
-            onChange={this.handleInputChange}
-          />
-          </label>
-          <br />
-          <label>
-          To:  
-          <input
-            type="text"
-            name="datefrom"
-            value={this.state.dateto}
-            onChange={this.handleInputChange}
-          />
-          </label>
-          <br />
+        <button type="newSlot">Add New Time Block</button>
+
+    
+        <br />
         <label>Restrict Number of Votes per Poll: </label> 
          <select>
             <option value = "na">No Restriction</option>

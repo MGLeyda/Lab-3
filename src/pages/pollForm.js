@@ -1,34 +1,27 @@
-import React from "react"
-export default class PollFormPage extends React.Component {
-  state = {
-    Title: "",
-    Location: "",
-    Notes: "",
-    RestrictVperPoll: "",
-    RestrictVperPar: "",
-    Invite: "",
-    Remind: "",
-  }
+import React, {useState} from "react"
 
-  handleInputChange = event => {
-    const target = event.target
-    const value = target.value
-    const name = target.name
-    this.setState({
-      [name]: value,
-    })
-  }
+function PollForm(props) {
+  const title = useFormInput('');
+  const location = useFormInput('');
+  const [timezone, setTimeZone] = useState(null);
+  const notes = useFormInput('');
+  const [restrictPoll, setRestrictPoll] = useState(null);
+  const [restrictPar, setRestrictPar] = useState(null);
+  const invite = useFormInput('');
+  const remind = useFormInput('');
 
-  handlePublish = event => {
-    event.preventDefault()
-    alert(`Welcome ${this.state.title} ${this.state.location}`)
-  }
- 
+  const timezones = [
+    {value: 1, label: "No Time Zone"},
+    {value: 2, label: "Central Standard Time"},
+    {value: 3, label: "Mountain Standard Time"},
+    {value: 4, label: "Pacifc Standard Time"},
+    {value: 5, label: "Alaska Standard Time"},
+    {value: 6, label: "Hawaii-Aleutian Standard Time"},
+    {value: 7, label: "Eastern Standard Time"}
+  ];
 
-  render() {
-    let{date, fromHr, fromMin, toHr, toMin, slots} = this.state
     return (
-      <form onSubmit={this.handlePublish} onChange = {this.handleNewBlock}>
+      <div>
         <h1>New Poll</h1>
         <br />
         <label>
@@ -36,8 +29,7 @@ export default class PollFormPage extends React.Component {
           <input
             type="text"
             name="title"
-            value={this.state.title}
-            onChange={this.handleInputChange}
+            onChange={handleTitle}
           />
         </label>
         <br />
@@ -46,26 +38,26 @@ export default class PollFormPage extends React.Component {
           <input
             type="text"
             name="location"
-            value={this.state.location}
-            onChange={this.handleInputChange}
+            onChange={handleLocation}
           />
         </label>
         <br />
          <label>Time Zone </label> 
          <select>
-            <option value = "def">No Time Zone</option>
-            <option value = "CT">Central Standard Time</option>
-            <option value = "MT">Moutain Standard Time</option>
-            <option value = "PT">Pacific Standard Time</option>
-            <option value = "AT">Alaska Standard Time</option>
-            <option value = "HT">Hawaii-Aleutian Standard Time</option>
+         <option value = "NTZ">No Time Zone</option>
+            <option value = "CST">Central Standard Time</option>
+            <option value = "MST">Mountain Standard Time</option>
+            <option value = "PST">Pacifc Standard Time</option>
+            <option value = "AST">Alaska Standard Time</option>
+            <option value = "HST">Hawaii-Aleutian Standard Time</option>
+            <option value = "EST">Eastern Standard Time</option>
         </select>
         <br />
         <label>Notes/Comments: </label>
         <br />
         <textarea name="Text1" cols="40" rows="5"></textarea>
         <br />
-        <button type="newSlot">Add New Time Block</button>
+        <button type="newSlot" onClick={handleNewBlock}>Add New Time Block</button>
 
     
         <br />
@@ -89,24 +81,75 @@ export default class PollFormPage extends React.Component {
             <option value = "5">5</option>
         </select>
         <br />
-        <label>
+         <label>
           Invite Participant(s):  
           <input
             type="text"
             name="invite"
-            value={this.state.location}
-            onChange={this.handleInputChange}
+            onChange={handleInvite}
           />
-        </label>
-        <br />
+        </label> 
+        <br /> 
 
         <label for="myCheck"></label> 
         <input type="checkbox" id="myCheck" onclick="myFunction()"/>
 
         <label> Remind Participant(s):  </label>
         <br />
-        <button type="publish">Publish</button> 
-      </form>
+        <button type="publish" onClick={handlePublish}>Publish</button> 
+        </div>
     )
-  }
+
+    const handlePublish = ()=> {
+      alert(`Welcome ${this.state.title} ${this.state.location}`)
+    }
+  
+    const handleNewBlock = () => {
+      <label>
+        dynamic test
+      </label>
+    }
+   
+    const handleTitle = () =>{
+      
+    }
+  
+    const handleLocation = () =>{
+      
+    }
+  
+    const handleTZ = event =>{
+      setTimeZone(event.value);
+    }
+    const handleNotes = () =>{
+  
+    }
+  
+    const handleRVPPoll = () =>{
+  
+    }
+  
+    const handlrRVPPar = () =>{
+  
+    }
+  
+    const handleInvite= () =>{
+  
+    }
+  
+    const handleRemid = () =>{
+      
+    }
 }
+    const useFormInput = initialValue => {
+      const [value, setValue] = useState(initialValue);
+     
+      const handleChange = e => {
+        setValue(e.target.value);
+      }
+      return {
+        value,
+        onChange: handleChange
+      }
+    }
+export default PollForm;

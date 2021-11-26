@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState} from "react";
 
 function PollForm(props) {
   const title = useFormInput('');
@@ -9,17 +9,24 @@ function PollForm(props) {
   const [restrictPar, setRestrictPar] = useState(null);
   const invite = useFormInput('');
   const remind = useFormInput('');
+  const [inputList, setInputList] = useState([{date: "", numSlots: "", startTime: "", endTime: ""}]);
 
-  const timezones = [
-    {value: 1, label: "No Time Zone"},
-    {value: 2, label: "Central Standard Time"},
-    {value: 3, label: "Mountain Standard Time"},
-    {value: 4, label: "Pacifc Standard Time"},
-    {value: 5, label: "Alaska Standard Time"},
-    {value: 6, label: "Hawaii-Aleutian Standard Time"},
-    {value: 7, label: "Eastern Standard Time"}
-  ];
+  const handleInputChange = (event, index) => {
+    const {name, value} = event.target;
+    let list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
 
+  const handleAddSlot = () => {
+    setInputList([...inputList, {date: "", numSlots: "", fromTime: "", toTime: "" }]);
+  };
+
+  const handleRemoveClick = index => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
     return (
       <div>
         <h1>New Poll</h1>
@@ -57,9 +64,58 @@ function PollForm(props) {
         <br />
         <textarea name="Text1" cols="40" rows="5"></textarea>
         <br />
-        <button type="newSlot" onClick={handleNewBlock}>Add New Time Block</button>
+        {inputList.map((x,index)=> {
+        return (
+          <div>  
+            Date: 
+            <input
+              className = "date"
+              placeholder = "MM/DD/YY"
+              name = "date"
+              value = {x.date}
+              onChange = {event => handleInputChange(event,index)} />
 
-    
+            Start Time: 
+            <input
+              className = "startTime"
+              name = "startTime"
+              placeholder = "11:35"
+              value = {x.startTime}
+              onChange = {event => handleInputChange(event, index)}/>
+            <select>
+              <option value = "AM">AM</option>
+              <option value = "PM">PM</option>
+            </select>  
+            End Time: 
+            <input
+              className = "endTime"
+              name = "endTime"
+              placeholder = "12:35"
+              value = {x.endTime}
+              onChange = {event => handleInputChange(event, index)}/>     
+              <select>
+              <option value = "AM">AM</option>
+              <option value = "PM">PM</option>
+            </select> 
+            Number of Time Slots during this time period: 
+            <input
+              className = "numSlots" 
+              name = "numSlots"
+              placeholder = "1"
+              value = {x.numSlots}
+              onChange = {event => handleInputChange(event, index)}/>
+            <div className = "removeSlot" >
+            {inputList.length !== 1 && <button
+                onClick={() => handleRemoveClick(index)}>Remove</button>}
+            </div>
+            <br />
+            <div className = "addSlot" >
+               {inputList.length - 1 === index && <button onClick={handleAddSlot}>Add New Time Block</button>}
+            </div>
+          </div>
+        )})}
+        
+         
         <br />
         <label>Restrict Number of Votes per Poll: </label> 
          <select>
@@ -97,17 +153,12 @@ function PollForm(props) {
         <label> Remind Participant(s):  </label>
         <br />
         <button type="publish" onClick={handlePublish}>Publish</button> 
-        </div>
+      </div>
     )
-
+  }   
+    
     const handlePublish = ()=> {
       alert(`Welcome ${this.state.title} ${this.state.location}`)
-    }
-  
-    const handleNewBlock = () => {
-      <label>
-        dynamic test
-      </label>
     }
    
     const handleTitle = () =>{
@@ -119,8 +170,10 @@ function PollForm(props) {
     }
   
     const handleTZ = event =>{
-      setTimeZone(event.value);
+
+    
     }
+      
     const handleNotes = () =>{
   
     }
@@ -140,7 +193,7 @@ function PollForm(props) {
     const handleRemid = () =>{
       
     }
-}
+
     const useFormInput = initialValue => {
       const [value, setValue] = useState(initialValue);
      

@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 
 function Login(props) {
-  const username = useFormInput('');
-  const password = useFormInput('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
  
   // handle button click of login form
-  const handleLogin = () => {
-    navigate('/Dashboard/')
+  const handleLogin = event => {
+        navigate('/Dashboard/')
   }
  
   return (
@@ -18,11 +18,11 @@ function Login(props) {
     <h1 style={{color: "green"}}>Login</h1>
       <div>
         Username<br />
-        <input type="text" {...username} autoComplete="new-password" />
+        <input type="text" onChange = {event => setUsername(event.target.value)}/>
       </div>
       <div style={{ marginTop: 10 }}>
         Password<br />
-        <input type="password" {...password} autoComplete="new-password" />
+        <input type="password" onChange = {event => setPassword(event.target.value)}/>
       </div>
       {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
       <input type="button" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />

@@ -31,8 +31,12 @@ function PollForm(props) {
       <div>
         <h1>New Poll</h1>
         <br />
-        <label>
-          Title:    
+        <label style = {{color: "red"}}>
+        '*' indicates required field
+        </label>
+        <br />
+        <label >
+          Title*:    
           <input
             type="text"
             name="title"
@@ -64,10 +68,11 @@ function PollForm(props) {
         <br />
         <textarea name="Text1" cols="40" rows="5"></textarea>
         <br />
+        <label style = {{color: "red"}}>Requires at least 1 timeslot </label>
         {inputList.map((x,index)=> {
         return (
           <div>  
-            Date: 
+            Date*: 
             <input
               className = "date"
               placeholder = "MM/DD/YY"
@@ -75,7 +80,7 @@ function PollForm(props) {
               value = {x.date}
               onChange = {event => handleInputChange(event,index)} />
 
-            Start Time: 
+            Start Time*: 
             <input
               className = "startTime"
               name = "startTime"
@@ -86,7 +91,7 @@ function PollForm(props) {
               <option value = "AM">AM</option>
               <option value = "PM">PM</option>
             </select>  
-            End Time: 
+            End Time*: 
             <input
               className = "endTime"
               name = "endTime"
@@ -97,7 +102,7 @@ function PollForm(props) {
               <option value = "AM">AM</option>
               <option value = "PM">PM</option>
             </select> 
-            Number of Time Slots during this time period: 
+            Number of Time Slots during this time period*: 
             <input
               className = "numSlots" 
               name = "numSlots"
@@ -141,16 +146,23 @@ function PollForm(props) {
           Invite Participant(s):  
           <input
             type="text"
+            placeholder = "hawkid@uiowa.edu"
             name="invite"
             onChange={handleInvite}
           />
         </label> 
         <br /> 
-
-        <label for="myCheck"></label> 
-        <input type="checkbox" id="myCheck" onclick="myFunction()"/>
-
-        <label> Remind Participant(s):  </label>
+        <label> Remind Participant(s): </label>
+        <select>
+            <option value = "na">No Reminder</option>
+            <option value = "2d">2 days before</option>
+            <option value = "1d">1 day before</option>
+            <option value = "2h">2 hours before</option>
+            <option value = "4">1 hour before</option>
+            <option value = "5">10 minutes before</option>
+        </select>
+        <br />
+           
         <br />
         <button type="publish" onClick={handlePublish}>Publish</button> 
       </div>
@@ -158,7 +170,7 @@ function PollForm(props) {
   }   
     
     const handlePublish = ()=> {
-      alert(`Welcome ${this.state.title} ${this.state.location}`)
+      
     }
    
     const handleTitle = () =>{

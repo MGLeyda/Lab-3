@@ -9,7 +9,9 @@ function Login(props) {
  
   // handle button click of login form
   const handleLogin = event => {
+      if(username === 'username' && password === 'password'){
         navigate('/Dashboard/')
+      }
   }
  
   return (

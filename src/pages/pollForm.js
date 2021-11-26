@@ -68,7 +68,7 @@ function PollForm(props) {
         <br />
         <textarea name="Text1" cols="40" rows="5"></textarea>
         <br />
-        <label style = {{color: "red"}}>Requires at least 1 timeslot </label>
+        <label style = {{color: "red"}}>At least one timeslot required </label>
         {inputList.map((x,index)=> {
         return (
           <div>  
@@ -152,6 +152,7 @@ function PollForm(props) {
           />
         </label> 
         <br /> 
+        
         <label> Remind Participant(s): </label>
         <select>
             <option value = "na">No Reminder</option>

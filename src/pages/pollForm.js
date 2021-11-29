@@ -9,7 +9,7 @@ function PollForm(props) {
   const [restrictPar, setRestrictPar] = useState(null);
   const invite = useFormInput('');
   const remind = useFormInput('');
-  const [inputList, setInputList] = useState([{date: "", numSlots: "", startTime: "", endTime: ""}]);
+  const [inputList, setInputList] = useState([{dateMM: "", dateDD: "", dateYY:"", numSlots: "", startTimeHH: "", startTimeMM: "", endTimeHH: "", endTimeMM: ""}]);
 
   const handleInputChange = (event, index) => {
     const {name, value} = event.target;
@@ -19,7 +19,7 @@ function PollForm(props) {
   };
 
   const handleAddSlot = () => {
-    setInputList([...inputList, {date: "", numSlots: "", fromTime: "", toTime: "" }]);
+    setInputList([...inputList, {dateMM: "", dateDD: "", dateYY: "", numSlots: "", startTimeHH: "", startTimeMM: "", endTimeHH: "", endTimeMM: ""}]);
   };
 
   const handleRemoveClick = index => {
@@ -74,34 +74,67 @@ function PollForm(props) {
           <div>  
             Date*: 
             <input
-              className = "date"
-              placeholder = "MM/DD/YY"
-              name = "date"
-              value = {x.date}
+              className = "dateMM"
+              placeholder = "MM"
+              name = "dateMM"
+              value = {x.dateMM}
               onChange = {event => handleInputChange(event,index)} />
-
+            /
+            <input 
+               className = "dateDD"
+               placeholder = "DD"
+               name = "dateDD"
+               value = {x.dateDD}
+               onChange = {event => handleInputChange(event,index)} 
+            />
+            /
+            <input 
+               className = "dateYY"
+               placeholder = "YY"
+               name = "dateYY"
+               value = {x.dateYY}
+               onChange = {event => handleInputChange(event,index)} 
+            />
+            <br />
             Start Time*: 
             <input
-              className = "startTime"
-              name = "startTime"
-              placeholder = "11:35"
-              value = {x.startTime}
+              className = "startTimeHH"
+              name = "startTimeHH"
+              placeholder = "HH"
+              value = {x.startTimeHH}
+              onChange = {event => handleInputChange(event, index)}/>
+
+            :
+            <input
+              className = "startTimeMM"
+              name = "startTimeMM"
+              placeholder = "MM"
+              value = {x.startTimeMM}
               onChange = {event => handleInputChange(event, index)}/>
             <select>
               <option value = "AM">AM</option>
               <option value = "PM">PM</option>
             </select>  
+            <br />
             End Time*: 
             <input
-              className = "endTime"
-              name = "endTime"
-              placeholder = "12:35"
-              value = {x.endTime}
-              onChange = {event => handleInputChange(event, index)}/>     
+              className = "endTimeHH"
+              name = "endTimeHH"
+              placeholder = "HH"
+              value = {x.endTimeHH}
+              onChange = {event => handleInputChange(event, index)}/>  
+              :
+              <input
+              className = "endTimeMM"
+              name = "endTimeMM"
+              placeholder = "MM"
+              value = {x.endTimeMM}
+              onChange = {event => handleInputChange(event, index)}/>        
               <select>
               <option value = "AM">AM</option>
               <option value = "PM">PM</option>
             </select> 
+            <br />
             Number of Time Slots during this time period*: 
             <input
               className = "numSlots" 

@@ -13,6 +13,14 @@ function Login(props) {
         navigate('/Dashboard/')
       }
   }
+
+  function pageRedirect(){
+    window.location.replace('/user/')
+  }
+
+  const handleUser =() =>{
+    navigate('/user/')
+  }
  
   return (
     <center>
@@ -28,6 +36,9 @@ function Login(props) {
       </div>
       {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
       <input type="button" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
+      <div style ={{marginTop: 10}}>
+      <button onClick={handleUser} >New user</button> 
+        </div>
     </div>
     </center>
   )

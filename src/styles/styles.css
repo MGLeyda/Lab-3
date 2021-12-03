@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+/* Our default values set as CSS variables */
+:root {
+  --color-bg: #FFFFA0;
+  --color-text-main: #000000;
+  --color-primary: #AFECE0;
+  --wrapper-height: 85vh;
+  --image-max-width: 320px;
+  --font-family: "Open Sans";
+  --font-family-header: "Open Sans";
+}
+
+/* Basic page style resets */
+* {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+
+/* Page structure */
+body {
+  font-family: 'Open Sans';
+  background-color: #E9FBFD ;
+}
+.wrapper {
+  min-height: var(--wrapper-height);
+  display: grid;
+  place-items: center;
+  margin: 0 1rem;
+  min-height: 86vh;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Page titles */
+h1 {
+  color: #587E83;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 100px;
+  line-height: 105%;
+  position: relative;
+  top: -250px;
+}
+.page h1 {
+  font-size: 48px;
+}
+
+.page p {
+  line-height: 1.5;
+}
+
+.page a {
+  color: #000;
+}
+
+.page a:hover {
+  text-decoration: none;
+}
+
+.admin h1{
+  font-size: 48px;
+}
+
+/* Instructions */
+.login {
+  margin: 1rem auto 0;
+}
+.login p {
+  font-size: 1rem;
+}
+h2 {
+  color: #587E83;
+}
+
+.login-container{
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+.login-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 260px;
+    height: 235px;
+    border-radius: 10px;
+    box-shadow: 2px 2px #587E83;
+}
+.logo-center{
+    margin: 0;
+    position: absolute;
+    top: 27%;
+    left: 50.5%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+  width: 75%;
+  padding: 12px 20px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+/* Set a style for all buttons */
+button {
+  background-color: #587E83;
+  color: white;
+  padding: 14px 20px;
+  margin: 2px 0;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  font-family: 'Open Sans';
+  border-radius: 10px;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+input {
+  border-radius: 10px;
+}
+
+/* Add a hover effect for buttons */
+
+.admin button{
+  background-color: #587E83;
+  color: white;
+  padding: 20px 20px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  width: 250%;
+  font-family: 'Open Sans';
+  border-radius: 10px;
+  display: block;
+}
+
+.button-center{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 46%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.edit button {
+  background-color: #587E83;
+  color: white;
+  padding: 20px 20px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  font-family: 'Open Sans';
+  border-radius: 10px;
+  display: block;
+}
